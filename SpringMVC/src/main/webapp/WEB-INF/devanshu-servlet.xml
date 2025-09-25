@@ -11,10 +11,10 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- Enable component scanning for your controllers -->
-    <context:component-scan base-package="com.devanshu.SpringBootMVC" />
+    <!-- Scan your package -->
+    <context:component-scan base-package="com.devanshu.springMVC" />
 
-    <!-- Enable Spring MVC annotations like @Controller, @RequestMapping -->
+    <!-- Enable Spring MVC Annotations -->
     <mvc:annotation-driven />
 
     <!-- Configure JSP ViewResolver -->
