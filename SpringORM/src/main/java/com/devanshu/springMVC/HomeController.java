@@ -1,14 +1,17 @@
 //package com.devanshu.springMVC;
 
 
-package com.devanshu.springMVC.controller;
+package com.devanshu.springMVC;
 
-import com.devanshu.springMVC.model.Alien;
+import com.devanshu.model.*;
+import com.devanshu.dao.*;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -99,13 +102,21 @@ public class HomeController {
 
     // # Model Attribute at Method Level
     @RequestMapping("addAlien")
-    public String addAlien(@ModelAttribute Alien a){
-        return "result";
+    public String addAlien(@ModelAttribute("result") Alien a){
+        dao.addAlien(a);
+        
+        return "showAliens";
+        		
     }
     
-    @GetMapping("getAliens")
-    public String getAliens(Model m) {
-    	m.addAttributes("result" , dao.getAliens());
+    @GetMapping("getAlien")
+    public String getAlien(@RequestParam int aid , Model m) {
+    	m.addAttribute("result" , dao.getAlien(aid));
+    }
+    
+    @GetMapping("getAlien")
+    public String getAlien(Model m) {
+    	m.addAttributes("result" , dao.getAlien());
     	
     	return "showAliens";
     	
